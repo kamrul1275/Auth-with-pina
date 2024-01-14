@@ -22,7 +22,10 @@ export const useTokenStore = defineStore('token', {
         },
 
         removeToken(){
+        const auth = useAuthStore();
+        auth.$reset();
         this.$reset();
+        return navigateTo("/login");
             
             },
 
