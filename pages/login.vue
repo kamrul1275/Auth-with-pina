@@ -42,8 +42,8 @@ definePageMeta({
   const token = useTokenStore();
   const user = reactive({
     
-  email:"phone@gmail.com",
-  password: "12345678",
+  email:"",
+  password: "",
   });
 
 

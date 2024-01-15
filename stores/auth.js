@@ -71,6 +71,34 @@ export const useAuthStore = defineStore('auth', {
 
 
 
+    // async rolerequest() {
+
+    //   //alert('oky');
+
+    //   const token = useTokenStore();
+    //   try {
+    //     const res = await $fetch('http://127.0.0.1:8000/api/role_permissions', {
+    //       method: 'GET',
+    //       headers: {
+    //         Accept: "application/json",
+    //         authorization: `Bearer ${token.getToken}`,
+          
+    //       },
+
+    //     });
+       
+    //     console.log('auth_store', res);
+      
+  
+    //   } catch (error) {
+    //     throw error;
+    //   }
+
+    // },
+
+
+
+
 
     //         commonSetter(data){
     //  const tokenStore =useTokenStore();
