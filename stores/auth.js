@@ -39,10 +39,7 @@ export const useAuthStore = defineStore('auth', {
 
     },
 
-
     // logout part
-
-
 
     async logout() {
 
@@ -55,21 +52,19 @@ export const useAuthStore = defineStore('auth', {
           headers: {
             Accept: "application/json",
             authorization: `Bearer ${token.getToken}`,
-          
+
           },
 
         });
         token.removeToken();
         console.log('auth_store', res);
         return navigateTo("/login");
-  
+
       } catch (error) {
         throw error;
       }
 
     },
-
-
 
     // async rolerequest() {
 
@@ -82,22 +77,19 @@ export const useAuthStore = defineStore('auth', {
     //       headers: {
     //         Accept: "application/json",
     //         authorization: `Bearer ${token.getToken}`,
-          
+
     //       },
 
     //     });
-       
+
     //     console.log('auth_store', res);
-      
-  
+
+
     //   } catch (error) {
     //     throw error;
     //   }
 
     // },
-
-
-
 
 
     //         commonSetter(data){
