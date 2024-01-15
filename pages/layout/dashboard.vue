@@ -15,6 +15,8 @@
         name:{{ auth.getUser.name }}   <br> <br>
         email:{{ auth.getUser.email }}
 
+
+        {{ token.getStatus }}
     </div>
 </div>
 
@@ -22,8 +24,13 @@
 
 <script setup>
 
-const auth = useAuthStore();
+definePageMeta({
+  middleware: 'auth'
+  // or middleware: 'auth'
+})
 
+const auth = useAuthStore();
+const token = useTokenStore();
 
 </script>
 

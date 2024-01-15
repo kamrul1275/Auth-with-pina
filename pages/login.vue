@@ -33,6 +33,11 @@
 
 <script setup>
 
+definePageMeta({
+  middleware: ["guest"]
+  // or middleware: 'auth'
+})
+
   const auth = useAuthStore();
   const token = useTokenStore();
   const user = reactive({

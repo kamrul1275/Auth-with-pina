@@ -46,19 +46,22 @@ export const useAuthStore = defineStore('auth', {
 
     async logout() {
 
+      //alert('oky');
+
       const token = useTokenStore();
       try {
         const res = await $fetch('http://127.0.0.1:8000/api/logout', {
           method: 'POST',
           headers: {
             Accept: "application/json",
-            authorization:`Bearer ${useTokenStore.getToken}`,
-           
+            authorization: `Bearer ${token.getToken}`,
+          
           },
 
         });
+        token.removeToken();
         console.log('auth_store', res);
-
+        return navigateTo("/login");
   
       } catch (error) {
         throw error;
