@@ -21,6 +21,8 @@ export const useAuthStore = defineStore('auth', {
 
   actions: {
 
+
+    // login
     async login(userData) {
 
       const token = useTokenStore();
@@ -32,12 +34,37 @@ export const useAuthStore = defineStore('auth', {
         console.log('auth_store', data.authorization.token);
         token.setToken(data.authorization.token);
         this.user = data.user;
-        return navigateTo("/layout/dashboard");
+        return navigateTo("/dashboard");
       } catch (error) {
         throw error;
       }
 
-    },
+    },//end login
+
+
+
+       // register
+       async register(userData) {
+
+        //alert('oky');
+
+        const token = useTokenStore();
+        try {
+          const data = await $fetch('http://127.0.0.1:8000/api/register', {
+            method: 'POST',
+            body: { ...userData },
+          });
+          return navigateTo("/auth/login");
+        } catch (error) {
+          throw error;
+        }
+  
+      },
+  
+
+
+
+
 
     // logout part
 
@@ -58,7 +85,7 @@ export const useAuthStore = defineStore('auth', {
         });
         token.removeToken();
         console.log('auth_store', res);
-        return navigateTo("/login");
+        return navigateTo("/auth/login");
 
       } catch (error) {
         throw error;
