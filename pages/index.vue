@@ -11,8 +11,6 @@
         Flowbite on iOS & Android. Download the app today.</p>
 
     </div>
-
-
   </div>
 </template>
 
