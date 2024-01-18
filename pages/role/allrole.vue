@@ -40,7 +40,21 @@
 
             <td class="px-6 py-2">  {{ item.name}} </td> 
 
-            <td class="px-6 py-2">  {{ item.role.name}} </td>
+            <td class="px-6 py-2">
+              
+              <ul>
+                <li v-for="(role, index) in item.role" :key="index">
+
+                  {{ role.name }}   
+
+                </li>
+              </ul>
+              
+                 
+               
+               
+               
+               </td> 
 
             <td class="px-6">
               <nuxt-link
@@ -49,15 +63,16 @@
               >
                 Edit
               </nuxt-link>
+
+              <nuxt-link
+                href="/product/edit"
+                class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+              >
+                Delete
+              </nuxt-link>
             </td>
 
-            <td class="px-6  ">
-              <a
-                href="#"
-                class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                >Delete</a
-              >
-            </td>
+        
           </tr>
         </tbody>
       </table>
@@ -78,6 +93,7 @@ export default {
     return {
       data: [],
       errors: [],
+      AccessRole:[]
     };
   },
 

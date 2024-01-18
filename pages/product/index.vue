@@ -20,7 +20,7 @@
     <br>
 
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <table
+    <table 
       class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
     >
       <thead
@@ -36,7 +36,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr
+        <tr  
           v-for="product in products.data"
           :key="product.id"
           class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
@@ -100,6 +100,9 @@ definePageMeta({
   middleware: "auth",
   // or middleware: 'auth'
 });
+
+const page = ref(1)
+const items = ref(Array(55))
 
 export default {
   // start...
