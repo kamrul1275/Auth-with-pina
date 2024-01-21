@@ -142,7 +142,7 @@ export default {
           //console.log('Form submitted successfully:', response)
           .then((response) => {
             this.data = response.data;
-            console.log("FForm submitted successfully ", response);
+            console.log("Form submitted successfully ", response);
           });
       } catch (error) {
         this.errors.push(error);

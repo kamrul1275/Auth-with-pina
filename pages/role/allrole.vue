@@ -9,8 +9,8 @@
       >add Role
     </nuxt-link>
 
-    <br />
-    <br />
+    <br>
+    <br>
 
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table
@@ -113,27 +113,8 @@ export default {
         });
     } catch (error) {}
 
-    // // start role request
-    // const auth = useAuthStore();
-    // const token = useTokenStore();
-    // try {
-    //   const roles = $fetch("http://127.0.0.1:8000/api/roles", {
-    //     method: "GET",
-    //     headers: {
-    //       Accept: "application/json",
-    //       authorization: `Bearer ${token.getToken}`,
-    //     },
-    //   }).then((response) => {
-    //     this.roles = response.data;
-    //     console.log("roles", this.roles);
-    //   });
-    //   //  console.log('roles', roles.authorization.token);
-    // } catch (error) {
-    //   this.errors.push(error);
-    //   throw error;
-    // }
-    // //end  get role
-  },
+  },// end
+
 
   // end
 };

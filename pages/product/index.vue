@@ -1,7 +1,7 @@
 <template>
-  <br />
-  <br />
-  <br />
+  <br>
+  <br>
+  <br>
 
   <!-- card start -->
   <div>
@@ -16,14 +16,15 @@
   <nuxt-link  to="/product/create"  class="w-full text-center bg-red border border-gray-200 rounded-lg shadow sm:p-3 dark:bg-gray-800 dark:border-gray-700"
     >Create Product </nuxt-link >
 
-    <br>
-    <br>
+   
 
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+
+    <!-- {{ products }} -->
     <table 
       class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
     >
-      <thead
+      <thead 
         class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
       >
         <tr>
@@ -36,11 +37,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr  
-          v-for="product in products.data"
+
+    {{ AccessRole }}
+        <tr 
+          v-for="product in AccessRole"
           :key="product.id"
           class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
         >
+
+        
           <th
             scope="row"
             class="px-6 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
@@ -81,8 +86,16 @@
             >
           </td>
         </tr>
+        <!-- <input type="text" v-model="1" :page-count="5" :total="items.10"> -->
       </tbody>
     </table>
+
+    <!-- <UPagination v-model="product.page" :page-count="calculatePageCount()" :total="product.total" @pageChange="fetchData" /> -->
+
+    <UPagination v-model="page" :page-count="5" :total="10" />
+
+
+
   </div>
 
   <br>
@@ -93,6 +106,7 @@
   <br>
 </template>
 
+
 <script>
 import axios from "axios";
 
@@ -101,8 +115,8 @@ definePageMeta({
   // or middleware: 'auth'
 });
 
-const page = ref(1)
-const items = ref(Array(55))
+
+
 
 export default {
   // start...
@@ -116,76 +130,49 @@ export default {
         title: "",
         price: "",
         user_id: "",
+     
       },
+   
     };
   },
 
-  // get product.........
 
-  created() {
-    this.ProductLoad();
-  },
+
+
+
+
 
   mounted() {
-    console.log("mounted() called.......");
-  },
+    try {
+      let token = useTokenStore();
+      const AccessRole = axios
+        .get("http://127.0.0.1:8000/api/products", {
+          headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token.getToken}`,
+          },
+        })
+        .then((response) => {
+          this.AccessRole = response.data;
+          console.log("User Role", this.AccessRole);
+        });
+    } catch (error) {}
 
-  methods: {
-    ProductLoad() {
-      var page = "http://127.0.0.1:8000/api/products";
-      console.log(page);
+  },// end
 
-      axios.get(page).then(({ data }) => {
-        console.log(data);
-        this.products = data;
-      });
-    },
 
-    // store data
-    save() {
-      if (this.product.id == "") {
-        this.saveData();
-      } else {
-        this.updateData();
-      }
-    },
-    saveData() {
-      axios.post("http://127.0.0.1:8000/api/product/store", this.product).then(() => {
-        alert(" Product successfully added");
-        this.ProductLoad();
 
-        this.resetForm(); // call the resetForm
-      });
-    },
 
-    // edit part start
 
-    edit(product) {
-      //alert('okt');
-      //console.log(product.id);
-      this.product = product;
-    },
-    updateData() {
-      var editrecords = "http://127.0.0.1:8000/api/products/" + this.product.id;
-      axios.put(editrecords, this.product).then(({ data }) => {
-        this.product.product_name = "";
-        (this.product.price = ""), (this.id = "");
-        alert("Product Updated....!!!");
-        this.ProductLoad();
-        console.log(data);
-        this.resetForm(); // call the resetForm
-      });
-    },
 
-    // delete product
-    remove(product) {
-      var url = `http://127.0.0.1:8000/api/products/${product.id}`;
-      axios.delete(url);
-      alert("Product Deleteddd");
-      this.ProductLoad();
-    },
-  },
-};
+
+}
+
+
+
+
+
+
 </script>
 
 <style lang="scss" scoped></style>

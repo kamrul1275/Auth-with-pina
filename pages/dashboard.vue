@@ -11,7 +11,7 @@
       <p class="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">Stay up to date and move work forward with
         Flowbite on iOS & Android. Download the app today.</p>
 
-        name:{{ auth.getUser.id }}   <br> <br>
+        id:{{ auth.getUser.id }}   <br> <br>
         name:{{ auth.getUser.name }}   <br> <br>
         email:{{ auth.getUser.email }}
 
@@ -33,6 +33,12 @@ definePageMeta({
 
 const auth = useAuthStore();
 const token = useTokenStore();
+
+
+    // login
+
+
+
 
 </script>
 
