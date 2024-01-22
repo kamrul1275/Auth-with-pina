@@ -3,7 +3,6 @@ import { defineStore } from 'pinia'
 import { useTokenStore } from './token';
 export const useAuthStore = defineStore('auth', {
 
-
   state: () => ({
     user: {},
 
@@ -17,6 +16,7 @@ export const useAuthStore = defineStore('auth', {
   getters: {
     getUser: (state) => state.user,
 
+   
   },
 
   actions: {
@@ -34,6 +34,11 @@ export const useAuthStore = defineStore('auth', {
         console.log('auth_store', data.authorization.token);
         token.setToken(data.authorization.token);
         this.user = data.user;
+      
+        // const permission = await $fetch('http://127.0.0.1:8000/api/role_permissions');
+        // this.permission = data.permission; // Fix: Assign permissions to this.permission
+
+
         return navigateTo("/dashboard");
       } catch (error) {
         throw error;
@@ -93,41 +98,29 @@ export const useAuthStore = defineStore('auth', {
 
     },
 
-    // async rolerequest() {
+ 
+// permission
+
+
+
+     // register
+    //  async permission(userData) {
 
     //   //alert('oky');
 
     //   const token = useTokenStore();
     //   try {
-    //     const res = await $fetch('http://127.0.0.1:8000/api/role_permissions', {
+    //     const permission = await $fetch('http://127.0.0.1:8000/api/role_permissions', {
     //       method: 'GET',
-    //       headers: {
-    //         Accept: "application/json",
-    //         authorization: `Bearer ${token.getToken}`,
-
-    //       },
-
+    //       body: { ...userData },
     //     });
-
-    //     console.log('auth_store', res);
-
-
+       
     //   } catch (error) {
     //     throw error;
     //   }
-
+    //   console.log(permission);
+    //   this.permission = data.permission;
     // },
-
-
-    //         commonSetter(data){
-    //  const tokenStore =useTokenStore();
-    //  tokenStore.setToken(data.authorization.token);
-    //  this.user = data.user
-
-    //  return navigateTo("/layout/dashboard");
-
-    //         }
-
 
 
   },//end action

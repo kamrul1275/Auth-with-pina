@@ -67,8 +67,14 @@ import { useTokenStore } from "@/stores/token";
 
 import axios from "axios";
 
+// definePageMeta({
+//   middleware: "auth",
+//   // or middleware: 'auth'
+// });
+
+
 definePageMeta({
-  middleware: "auth",
+  middleware: 'permission'
   // or middleware: 'auth'
 });
 

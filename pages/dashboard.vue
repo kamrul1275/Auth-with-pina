@@ -11,12 +11,16 @@
       <p class="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">Stay up to date and move work forward with
         Flowbite on iOS & Android. Download the app today.</p>
 
-        id:{{ auth.getUser.id }}   <br> <br>
+        <!-- {{ auth.getUser.role.permissions }}  -->
+
+
         name:{{ auth.getUser.name }}   <br> <br>
         email:{{ auth.getUser.email }}
 
 
-        {{ token.getStatus }}
+       
+
+
     </div>
 </div>
 

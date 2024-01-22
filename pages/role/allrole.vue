@@ -41,20 +41,8 @@
             <td class="px-6 py-2">  {{ item.name}} </td> 
 
             <td class="px-6 py-2">
-              
-              <ul>
-                <li v-for="(role, index) in item.role" :key="index">
-
-                  {{ role.name }}   
-
-                </li>
-              </ul>
-              
-                 
-               
-               
-               
-               </td> 
+              {{ item.role.name}} 
+           </td> 
 
             <td class="px-6">
               <nuxt-link

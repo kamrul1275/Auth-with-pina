@@ -115,7 +115,10 @@ definePageMeta({
   // or middleware: 'auth'
 });
 
-
+definePageMeta({
+  middleware: 'permission'
+  // or middleware: 'auth'
+});
 
 
 export default {

@@ -26,8 +26,8 @@
             {{ role.name }}
           </option>
         </select>
-
-        <!-- {{ roles }}  -->
+      
+  
 
         <button
           type="submit"
@@ -38,18 +38,27 @@
         </button>
       </form>
 
+
+
       <p class="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">
         Stay up to date and move work forward with Flowbite on iOS & Android. Download the
         app today.
       </p>
+
+      <br>
+      <br> 
+
+   
       <ul>
-        <li v-for="(item, index) in data" :key="index">
-          {{ item }}
+        <li v-for="(item, index) in role_permissions" :key="index">
+         
+ {{ item }}
+
         </li>
       </ul>
 
-      <br />
-      <br />
+  
+      <br>
     </div>
   </div>
 </template>
@@ -63,6 +72,12 @@ definePageMeta({
   middleware: "auth",
   // or middleware: 'auth'
 });
+
+
+
+
+
+
 export default {
   data() {
     return {
@@ -77,7 +92,7 @@ export default {
   mounted() {
     try {
       let token = useTokenStore();
-      axios
+      const role_permissions =axios
         .get("http://127.0.0.1:8000/api/role_permissions", {
           headers: {
             Accept: "application/json",
@@ -85,13 +100,13 @@ export default {
           },
         })
         .then((response) => {
-          this.data = response.data;
-          console.log("permissions", this.data);
+            this.role_permissions = response.data;
+          console.log("permissions Data:", this.role_permissions);
         });
     } catch (error) {
       this.errors.push(error);
       throw error;
-    }
+    } 
 
     // start role request
 
@@ -148,23 +163,8 @@ export default {
         this.errors.push(error);
         throw error;
       }
-      //   const token = useTokenStore();
-      //   try {
-      //     const rolesUpdate = $fetch("http://127.0.0.1:8000/api/roles/"+this.$route.params.id, {
-      //       method: "patch",
-      //       headers: {
-      //         Accept: "application/json",
-      //         authorization: `Bearer ${token.getToken}`,
-      //       },
-      //     }).then((response) => {
-      //       this.rolesUpdate = response.data;
-      //       console.log("roles", this.rolesUpdate);
-      //     });
-      //     //  console.log('roles', roles.authorization.token);
-      //   } catch (error) {
-      //     this.errors.push(error);
-      //     throw error;
-      //   }
+    
+ 
     },
   },
 };
