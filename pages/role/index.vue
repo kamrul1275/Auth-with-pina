@@ -49,13 +49,13 @@
       <br> 
 
    
-      <ul>
+      <!-- <ul>
         <li v-for="(item, index) in role_permissions" :key="index">
          
  {{ item }}
 
         </li>
-      </ul>
+      </ul> -->
 
   
       <br>

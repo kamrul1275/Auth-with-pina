@@ -5,18 +5,18 @@ export const useAuthStore = defineStore('auth', {
 
   state: () => ({
     user: {},
+    permissions:[],
 
   }),
   // user save
   persist: {
-    paths: ['user'],
+    paths: ['user','permissions'],
   },
 
 
   getters: {
     getUser: (state) => state.user,
-
-   
+    getPermission: (state) => state.permissions,
   },
 
   actions: {
@@ -31,12 +31,10 @@ export const useAuthStore = defineStore('auth', {
           method: 'POST',
           body: { ...userData },
         });
-        console.log('auth_store', data.authorization.token);
         token.setToken(data.authorization.token);
         this.user = data.user;
+        this.permissions = data.permissions;
       
-        // const permission = await $fetch('http://127.0.0.1:8000/api/role_permissions');
-        // this.permission = data.permission; // Fix: Assign permissions to this.permission
 
 
         return navigateTo("/dashboard");

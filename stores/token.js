@@ -22,9 +22,7 @@ export const useTokenStore = defineStore('token', {
         },
 
         removeToken() {
-            console.log('hiii')
-            const auth = useAuthStore();
-            auth.$reset();
+            console.log('hiii');
             this.$reset();
 
 
