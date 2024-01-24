@@ -100,25 +100,94 @@ export const useAuthStore = defineStore('auth', {
 // permission
 
 
+// permission view ########
 
-     // register
-    //  async permission(userData) {
+async hasViewPremission(){
+  let hasCreatePermission = false;
+  let tempPremissions = []
+  console.log("auth:---", this.permissions);
+  for (let index = 0; index < this.permissions.length; index++) {
+    const element = this.permissions[index];
+    tempPremissions.push(element)
+    }
+  for (let index = 0; index < tempPremissions.length; index++) {
+    const element = tempPremissions[index];
+    if (element["name"] == "view") {
+      hasCreatePermission= true;
+      break;
+    } else {
+      hasCreatePermission= false;
+    }
+  }
+  return hasCreatePermission;
+},
 
-    //   //alert('oky');
+    
+async hasCreatePremission(){
+  let hasCreatePermission = false;
+  let tempPremissions = []
+  console.log("auth:---", this.permissions);
+  for (let index = 0; index < this.permissions.length; index++) {
+    const element = this.permissions[index];
+    tempPremissions.push(element)
+    }
+  for (let index = 0; index < tempPremissions.length; index++) {
+    const element = tempPremissions[index];
+    if (element["name"] == "create") {
+      hasCreatePermission= true;
+      break;
+    } else {
+      hasCreatePermission= false;
+    }
+  }
+  return hasCreatePermission;
+},
 
-    //   const token = useTokenStore();
-    //   try {
-    //     const permission = await $fetch('http://127.0.0.1:8000/api/role_permissions', {
-    //       method: 'GET',
-    //       body: { ...userData },
-    //     });
-       
-    //   } catch (error) {
-    //     throw error;
-    //   }
-    //   console.log(permission);
-    //   this.permission = data.permission;
-    // },
+
+
+
+
+async hasEditPremission(){
+  let hasCreatePermission = false;
+  let tempPremissions = []
+  console.log("auth:---", this.permissions);
+  for (let index = 0; index < this.permissions.length; index++) {
+    const element = this.permissions[index];
+    tempPremissions.push(element)
+    }
+  for (let index = 0; index < tempPremissions.length; index++) {
+    const element = tempPremissions[index];
+    if (element["name"] == "edit") {
+      hasCreatePermission= true;
+      break;
+    } else {
+      hasCreatePermission= false;
+    }
+  }
+  return hasCreatePermission;
+},
+
+
+ 
+async hasDeletePremission(){
+  let hasCreatePermission = false;
+  let tempPremissions = []
+  console.log("auth:---", this.permissions);
+  for (let index = 0; index < this.permissions.length; index++) {
+    const element = this.permissions[index];
+    tempPremissions.push(element)
+    }
+  for (let index = 0; index < tempPremissions.length; index++) {
+    const element = tempPremissions[index];
+    if (element["name"] == "delete") {
+      hasCreatePermission= true;
+      break;
+    } else {
+      hasCreatePermission= false;
+    }
+  }
+  return hasCreatePermission;
+}
 
 
   },//end action

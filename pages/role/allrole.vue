@@ -49,14 +49,14 @@
                 href="/product/edit"
                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
               >
-                Edit
+               ........
               </nuxt-link>
 
               <nuxt-link
                 href="/product/edit"
                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
               >
-                Delete
+              ........
               </nuxt-link>
             </td>
 
